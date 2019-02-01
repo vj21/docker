@@ -12,4 +12,8 @@ RUN apt-get  update \
     && mkdir /home/jenkins/.ssh \
     && chown -R jenkins:jenkins /home/jenkins/.ssh/ \
     && chmod 700 /home/jenkins/.ssh/ \
-    && echo "jenkins:$jenkins_password"  | chpasswd
+    && echo "jenkins:$jenkins_password"  | chpasswd\
+    && mkdir /scripts
+ADD entritypoint.sh /scripts/entritypoint.sh
+RUN chmod +x /scripts/entritypoint.sh
+ENTRYPOINT ["/scripts/entritypoint.sh"]
