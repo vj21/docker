@@ -48,4 +48,5 @@ RUN echo "var http = require('http');" >> $node_file_start\
 EXPOSE 2222
 EXPOSE 8084
 CMD ["/usr/sbin/sshd", "-D"]
+RUN chmod +x /scripts/start.sh
 ENTRYPOINT ["/scripts/start.sh"]
