@@ -1,0 +1,16 @@
+version: "3"
+services:
+  learning-elk:
+    image: sebp/elk
+    ports:
+      - "5601:5601"
+      - "9200:9200"
+      - "5044:5044"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    volumes:
+     - ./elasticsearch_data:/var/lib/elasticsearch
+networks:
+  learning:
